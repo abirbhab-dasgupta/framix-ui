@@ -1,0 +1,15 @@
+{
+  "name": "loader-04",
+  "type": "registry:component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\n\nexport default function Loader04() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <div className=\"relative w-24 h-24\">\n        {/* Main gradient ring */}\n        <motion.div\n          className=\"absolute inset-0 rounded-full\"\n          style={{\n            background: \"conic-gradient(from 0deg, #3b82f6, #8b5cf6, #ec4899, #f97316, #3b82f6)\",\n            padding: \"4px\",\n          }}\n          animate={{\n            rotate: [0, 360],\n          }}\n          transition={{\n            duration: 2,\n            repeat: Number.POSITIVE_INFINITY,\n            ease: \"linear\",\n          }}\n        >\n          <div className=\"w-full h-full bg-white dark:bg-gray-900 rounded-full\" />\n        </motion.div>\n\n        {/* Inner rotating ring */}\n        <motion.div\n          className=\"absolute inset-2 rounded-full\"\n          style={{\n            background: \"conic-gradient(from 180deg, #06b6d4, #10b981, #f59e0b, #ef4444, #06b6d4)\",\n            padding: \"3px\",\n          }}\n          animate={{\n            rotate: [360, 0],\n          }}\n          transition={{\n            duration: 1.5,\n            repeat: Number.POSITIVE_INFINITY,\n            ease: \"linear\",\n          }}\n        >\n          <div className=\"w-full h-full bg-white dark:bg-gray-900 rounded-full\" />\n        </motion.div>\n\n        {/* Pulsing center */}\n        <motion.div\n          className=\"absolute top-1/2 left-1/2 w-5 h-5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform -translate-x-1/2 -translate-y-1/2\"\n          animate={{\n            scale: [1, 1.2, 1],\n            opacity: [0.8, 1, 0.8],\n          }}\n          transition={{\n            duration: 1,\n            repeat: Number.POSITIVE_INFINITY,\n            ease: \"easeInOut\",\n          }}\n        />\n\n        {/* Outer glow effect */}\n        <motion.div\n          className=\"absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-sm\"\n          animate={{\n            scale: [1, 1.1, 1],\n            opacity: [0.5, 0.8, 0.5],\n          }}\n          transition={{\n            duration: 2,\n            repeat: Number.POSITIVE_INFINITY,\n            ease: \"easeInOut\",\n          }}\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "path": "/components/framixui/loader/loader-04.tsx",
+      "target": "/components/codesnippetui/loader-04.tsx"
+    }
+  ]
+}

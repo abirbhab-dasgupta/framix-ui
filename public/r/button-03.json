@@ -1,0 +1,19 @@
+{
+  "name": "button-03",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { motion } from \"motion/react\"\nimport { Send, Loader2 } from \"lucide-react\"\nimport { useState } from \"react\"\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Button03() {\n  const [state, setState] = useState<\"idle\" | \"loading\" | \"success\">(\"idle\")\n\n  const handleClick = () => {\n    if (state !== \"idle\") return\n\n    setState(\"loading\")\n\n    // Simulate API call\n    setTimeout(() => {\n      setState(\"success\")\n\n      // Reset after 2 seconds\n      setTimeout(() => {\n        setState(\"idle\")\n      }, 2000)\n    }, 2000)\n  }\n\n  return (\n    <Button\n      className={cn(\n        \"relative min-w-40 overflow-hidden\",\n        \"bg-indigo-100 dark:bg-indigo-900\",\n        \"hover:bg-indigo-200 dark:hover:bg-indigo-800\",\n        \"text-indigo-600 dark:text-indigo-300\",\n        \"border border-indigo-300 dark:border-indigo-700\",\n        state === \"success\" && \"bg-indigo-200 dark:bg-indigo-800\",\n      )}\n      onClick={handleClick}\n      disabled={state !== \"idle\"}\n    >\n      <motion.div\n        className=\"w-full flex items-center justify-center gap-2\"\n        animate={{\n          width: state === \"loading\" ? 40 : \"100%\",\n        }}\n        transition={{\n          duration: 0.3,\n        }}\n      >\n        {state === \"loading\" ? (\n          <motion.div\n            initial={{ opacity: 0, scale: 0.5 }}\n            animate={{ opacity: 1, scale: 1 }}\n            exit={{ opacity: 0, scale: 0.5 }}\n          >\n            <Loader2 className=\"w-4 h-4 animate-spin\" />\n          </motion.div>\n        ) : state === \"success\" ? (\n          <motion.div\n            initial={{ opacity: 0, y: 10 }}\n            animate={{ opacity: 1, y: 0 }}\n            className=\"flex items-center gap-2\"\n          >\n            <motion.div\n              initial={{ scale: 0 }}\n              animate={{ scale: 1 }}\n              transition={{ type: \"spring\", stiffness: 500, damping: 15 }}\n            >\n              <svg\n                className=\"w-4 h-4 text-indigo-600 dark:text-indigo-300\"\n                fill=\"none\"\n                viewBox=\"0 0 24 24\"\n                stroke=\"currentColor\"\n              >\n                <motion.path\n                  initial={{ pathLength: 0 }}\n                  animate={{ pathLength: 1 }}\n                  transition={{ duration: 0.5, ease: \"easeInOut\" }}\n                  strokeLinecap=\"round\"\n                  strokeLinejoin=\"round\"\n                  strokeWidth={2}\n                  d=\"M5 13l4 4L19 7\"\n                />\n              </svg>\n            </motion.div>\n            Sent!\n          </motion.div>\n        ) : (\n          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className=\"flex items-center gap-2\">\n            <Send className=\"w-4 h-4\" />\n            Submit\n          </motion.div>\n        )}\n      </motion.div>\n    </Button>\n  )\n}\n",
+      "path": "/components/framixui/button/button-03.tsx",
+      "target": "/components/codesnippetui/button-03.tsx"
+    }
+  ]
+}

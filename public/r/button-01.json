@@ -1,0 +1,19 @@
+{
+  "name": "button-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { motion, useAnimationControls } from \"motion/react\"\nimport { Download, Check } from \"lucide-react\"\nimport { useState } from \"react\"\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Button01() {\n  const [downloadState, setDownloadState] = useState<\"idle\" | \"downloading\" | \"complete\">(\"idle\")\n  const progressControls = useAnimationControls()\n\n  const handleClick = async () => {\n    if (downloadState !== \"idle\") return\n\n    setDownloadState(\"downloading\")\n\n    // Animate progress bar\n    await progressControls.start({\n      width: \"100%\",\n      transition: { duration: 2.5, ease: \"easeInOut\" },\n    })\n\n    setDownloadState(\"complete\")\n\n    // Reset after 2 seconds\n    setTimeout(() => {\n      progressControls.start({ width: \"0%\" })\n      setDownloadState(\"idle\")\n    }, 2000)\n  }\n\n  return (\n    <Button\n      className={cn(\n        \"relative overflow-hidden min-w-40\",\n        \"bg-emerald-100 dark:bg-emerald-900\",\n        \"hover:bg-emerald-200 dark:hover:bg-emerald-800\",\n        \"text-emerald-600 dark:text-emerald-300\",\n        \"border border-emerald-300 dark:border-emerald-700\",\n        downloadState === \"complete\" && \"bg-emerald-200 dark:bg-emerald-800\",\n      )}\n      onClick={handleClick}\n      disabled={downloadState !== \"idle\"}\n    >\n      {/* Progress bar */}\n      <motion.div\n        initial={{ width: \"0%\" }}\n        animate={progressControls}\n        className={cn(\n          \"absolute left-0 bottom-0 h-1\",\n          \"bg-emerald-500 dark:bg-emerald-400\",\n          downloadState === \"idle\" && \"opacity-0\",\n        )}\n      />\n\n      {/* Button content */}\n      <span className=\"relative flex items-center justify-center gap-2\">\n        {downloadState === \"complete\" ? (\n          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className=\"flex items-center gap-2\">\n            <Check className=\"w-4 h-4\" />\n            Downloaded\n          </motion.div>\n        ) : (\n          <>\n            <motion.div\n              animate={{\n                rotate: downloadState === \"downloading\" ? 360 : 0,\n              }}\n              transition={{\n                repeat: downloadState === \"downloading\" ? Number.POSITIVE_INFINITY : 0,\n                duration: 1.5,\n                ease: \"linear\",\n              }}\n            >\n              <Download className=\"w-4 h-4\" />\n            </motion.div>\n            {downloadState === \"downloading\" ? \"Downloading...\" : \"Download\"}\n          </>\n        )}\n      </span>\n    </Button>\n  )\n}\n",
+      "path": "/components/framixui/button/button-01.tsx",
+      "target": "/components/codesnippetui/button-01.tsx"
+    }
+  ]
+}

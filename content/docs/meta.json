@@ -1,0 +1,32 @@
+{
+    "title": "Components",
+    "description": "The headless library",
+    "icon": "chart-no-axes-gantt",
+    "root": true,
+    "defaultOpen": true,
+    "pages": [
+        "---Get Started---",
+        "index",
+        "---Latest---",
+        "components/auth-page",
+        "components/booking-form",
+        "components/cosmic-portal-button",
+        "components/credit-card-input",
+        "components/floating-shapes-background",
+        "components/flowing-curves-background",
+        "components/glassmorphism-profile-card",
+        "components/minimal-profile-card",
+        "components/particle-background",
+        "components/sleek-background",
+        "components/sleek-profile-card",
+        "---Components---",
+        "components/alert",
+        "components/button",
+        "components/card",
+        "components/input",
+        "components/loader",
+        "---Hooks---",
+        "hooks/use-auto-resize-textarea",
+        "hooks/use-copy-to-clipboard"
+    ]
+}

@@ -77,12 +77,12 @@ const Header = () => {
                     >
                       Docs
                     </ViewTransitionsLink>
-                    <ViewTransitionsLink
+                    {/* <ViewTransitionsLink
                       href={"/pricing"}
                       className='relative text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors pb-1 after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full'
                     >
                       Pricing
-                    </ViewTransitionsLink>
+                    </ViewTransitionsLink> */}
                   </div>
                 </div>
               </div>
@@ -129,13 +129,13 @@ const Header = () => {
                   >
                     Docs
                   </ViewTransitionsLink>
-                  <ViewTransitionsLink
+                  {/* <ViewTransitionsLink
                     href="/pricing"
                     className="relative text-base text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Pricing
-                  </ViewTransitionsLink>
+                  </ViewTransitionsLink> */}
                 </div>
               </div>
             </div>

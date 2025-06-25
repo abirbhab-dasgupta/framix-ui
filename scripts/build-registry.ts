@@ -48,7 +48,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
                 type: registryType,
                 content: fileContent,
                 path: normalizedPath,
-                target: `/components/codesnippetui/${fileName}`,
+                target: `/components/framixui/${fileName}`,
             };
         }
         const normalizedPath = file.path.startsWith("/")
@@ -68,7 +68,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
                 case "registry:block":
                     return `/blocks/${fileName}`;
                 default:
-                    return `/components/codesnippetui/${fileName}`;
+                    return `/components/framixui/${fileName}`;
             }
         };
         

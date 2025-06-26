@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react"
 import type React from "react"
 
 import { useState } from "react"
-import { Copy, Palette, Zap, Settings, Check, Plus, Minus } from "lucide-react"
+import { Copy, Palette, Zap, Settings, Check, Plus, Minus, ChevronLeft, ChevronRight } from "lucide-react"
 
 const features = [
   {
@@ -322,10 +322,17 @@ const previewComponents = {
 }
 
 export function FeatureShowcase() {
-  const [activeFeature, setActiveFeature] = useState("copy-paste")
-  const ActivePreview =
-    previewComponents[features.find((f) => f.id === activeFeature)?.preview as keyof typeof previewComponents] ||
-    CodePreview
+  const [activeFeatureIndex, setActiveFeatureIndex] = useState(0)
+  const activeFeature = features[activeFeatureIndex]
+  const ActivePreview = previewComponents[activeFeature.preview as keyof typeof previewComponents] || CodePreview
+
+  const nextFeature = () => {
+    setActiveFeatureIndex((prev) => (prev + 1) % features.length)
+  }
+
+  const prevFeature = () => {
+    setActiveFeatureIndex((prev) => (prev - 1 + features.length) % features.length)
+  }
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -346,76 +353,87 @@ export function FeatureShowcase() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Features List */}
-          <div className="lg:col-span-5 space-y-3">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setActiveFeature(feature.id)}
-                className={`group cursor-pointer p-6 rounded-2xl transition-all duration-300 ${
-                  activeFeature === feature.id
-                    ? "bg-white dark:bg-zinc-800 shadow-xl border-2 border-sky-200 dark:border-sky-800"
-                    : "bg-white/40 dark:bg-zinc-900/40 hover:bg-white/60 dark:hover:bg-zinc-800/60 border-2 border-transparent"
-                } backdrop-blur-sm`}
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={`flex-shrink-0 p-3 rounded-xl transition-all duration-300 ${
-                      activeFeature === feature.id
-                        ? "bg-gradient-to-br from-sky-500 to-cyan-500 text-white"
-                        : "bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-sky-100 dark:group-hover:bg-sky-900/50"
-                    }`}
+        <div className="space-y-8">
+          {/* Interactive Preview */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full"
+          >
+            <div className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-3xl p-2 shadow-2xl">
+              <div className="bg-zinc-50 dark:bg-zinc-800 rounded-2xl min-h-[500px] overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeFeatureIndex}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="h-full"
                   >
-                    <feature.icon className="w-5 h-5" />
+                    <ActivePreview />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Navigation with Single Feature Card */}
+          <div className="flex items-center justify-center gap-6">
+            {/* Left Arrow */}
+            <button
+              onClick={prevFeature}
+              className="p-4 rounded-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-white/80 dark:hover:bg-zinc-800/80 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              <ChevronLeft className="w-6 h-6 text-zinc-600 dark:text-zinc-400" />
+            </button>
+
+            {/* Single Active Feature Card */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeFeatureIndex}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="bg-white dark:bg-zinc-800 shadow-xl border-2 border-sky-200 dark:border-sky-800 backdrop-blur-sm p-8 rounded-3xl min-w-[320px] max-w-[400px]"
+              >
+                <div className="flex flex-col items-center text-center gap-6">
+                  <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-500 to-cyan-500 text-white shadow-lg">
+                    <activeFeature.icon className="w-8 h-8" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3
-                      className={`font-semibold mb-2 transition-colors duration-300 ${
-                        activeFeature === feature.id
-                          ? "text-zinc-900 dark:text-white"
-                          : "text-zinc-700 dark:text-zinc-300"
-                      }`}
-                    >
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{feature.description}</p>
+                  <div>
+                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">{activeFeature.title}</h3>
+                    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">{activeFeature.description}</p>
                   </div>
                 </div>
               </motion.div>
-            ))}
+            </AnimatePresence>
+
+            {/* Right Arrow */}
+            <button
+              onClick={nextFeature}
+              className="p-4 rounded-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-white/80 dark:hover:bg-zinc-800/80 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              <ChevronRight className="w-6 h-6 text-zinc-600 dark:text-zinc-400" />
+            </button>
           </div>
 
-          {/* Interactive Preview */}
-          <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="sticky top-8"
-            >
-              <div className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-3xl p-2 shadow-2xl">
-                <div className="bg-zinc-50 dark:bg-zinc-800 rounded-2xl min-h-[400px] overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeFeature}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="h-full"
-                    >
-                      <ActivePreview />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-            </motion.div>
+          {/* Feature Indicators */}
+          <div className="flex justify-center gap-3">
+            {features.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveFeatureIndex(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  index === activeFeatureIndex
+                    ? "bg-sky-500 w-10 h-3"
+                    : "bg-zinc-300 dark:bg-zinc-600 hover:bg-zinc-400 dark:hover:bg-zinc-500 w-3 h-3"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

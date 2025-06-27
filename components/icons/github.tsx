@@ -10,7 +10,7 @@ interface GitHubIconProps extends SVGProps<SVGSVGElement> {
   className?: string;
 }
 
-const GitHubIcon = ({ href = "https://github.com/abirbhab-dasgupta", className, ...props }: GitHubIconProps) => {
+const GitHubIcon = ({ href = "https://github.com/abirbhab-dasgupta/framix-ui", className, ...props }: GitHubIconProps) => {
   const { theme } = useTheme();
   
   const icon = (

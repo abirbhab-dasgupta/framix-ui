@@ -11,6 +11,7 @@
         "components/auth-page",
         "components/booking-form",
         "components/cosmic-portal-button",
+        "components/payment-success",
         "components/credit-card-input",
         "components/floating-shapes-background",
         "components/flowing-curves-background",

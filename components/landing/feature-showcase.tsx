@@ -116,7 +116,7 @@ const CustomizableDemo = () => {
       {/* Visual Box */}
       <div className="flex flex-col items-center justify-center space-y-4">
         <motion.div
-          className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-lg"
+          className="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl shadow-lg"
           animate={{
             width: boxSize,
             height: boxSize,
@@ -362,7 +362,7 @@ export function FeatureShowcase() {
             transition={{ duration: 0.6 }}
             className="w-2/3 mx-auto"
           >
-            <div className="bg-white dark:bg-black/5 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-3xl p-2 shadow-2xl">
+            <div className="bg-white dark:bg-[#010101] backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-3xl p-2 shadow-2xl">
               <div className="bg-zinc-50 dark:bg-zinc-800 rounded-2xl min-h-[400px] overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div

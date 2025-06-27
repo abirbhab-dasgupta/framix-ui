@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Link as ViewTransitionsLink } from "next-view-transitions"
 import { ThemeToggle } from "../ui/theme-toggle"
+import GitHubIcon from "../icons/github"
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -15,7 +16,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 right-0 left-0 z-50">
-      <div className="w-full bg-white dark:bg-black/5">
+      <div className="w-full bg-white dark:bg-[#010101]">
         {/* Header Content */}
         <div className="flex items-center justify-center w-full flex-col">
           <div
@@ -83,11 +84,13 @@ const Header = () => {
 
               {/* Right side items */}
               <div className="hidden sm:flex items-center gap-3">
+                <GitHubIcon />
                 <ThemeToggle />
               </div>
 
               {/* Mobile Menu Button and Theme Toggle */}
               <div className="flex sm:hidden items-center gap-3">
+                <GitHubIcon />
                 <ThemeToggle />
                 <button
                   onClick={toggleMobileMenu}

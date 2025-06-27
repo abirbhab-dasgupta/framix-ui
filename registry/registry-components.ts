@@ -402,6 +402,18 @@ export const component: Registry = [
             }
         ]
     },
+    {
+        name: "payment-success",
+        type: "registry:component",
+        dependencies: ["lucide-react","motion"],
+        registryDependencies: ["button"],
+        files:[
+            {
+                path:"components/framixui/payment-success.tsx",
+                type:"registry:component"
+            }
+        ]
+    },
 
 
 ]

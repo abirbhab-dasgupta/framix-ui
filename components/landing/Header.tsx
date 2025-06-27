@@ -29,7 +29,7 @@ const Header = () => {
               dark:backdrop-saturate-100
               border border-white/20 
               dark:border-white/5
-              w-full sm:min-w-[800px] sm:max-w-[1200px]
+              w-full sm:min-w-[500px] sm:max-w-[750px]
               rounded-[28px]
               px-4 py-2.5
               relative
@@ -66,7 +66,7 @@ const Header = () => {
                   <span className="text-zinc-300 dark:text-zinc-700">|</span>
                   <div className="flex items-center gap-4">
                     <ViewTransitionsLink
-                      href={"/docs/components/auth-page"}
+                      href={"/docs/components/particle-background"}
                       className='relative text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors pb-1 after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full'
                     >
                       Components
@@ -77,12 +77,6 @@ const Header = () => {
                     >
                       Docs
                     </ViewTransitionsLink>
-                    {/* <ViewTransitionsLink
-                      href={"/pricing"}
-                      className='relative text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors pb-1 after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full'
-                    >
-                      Pricing
-                    </ViewTransitionsLink> */}
                   </div>
                 </div>
               </div>
@@ -116,7 +110,7 @@ const Header = () => {
               <div className="bg-gradient-to-b from-white/80 via-white/60 to-white/80 dark:from-black/60 dark:via-zinc-950/70 dark:to-black/80 backdrop-blur-xl border border-white/20 dark:border-white/5 rounded-[20px] p-4 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)]">
                 <div className="flex flex-col space-y-4">
                   <ViewTransitionsLink
-                    href="/docs/components/background-paths"
+                    href="/docs/components/particle-background"
                     className="relative text-base text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -129,13 +123,6 @@ const Header = () => {
                   >
                     Docs
                   </ViewTransitionsLink>
-                  {/* <ViewTransitionsLink
-                    href="/pricing"
-                    className="relative text-base text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Pricing
-                  </ViewTransitionsLink> */}
                 </div>
               </div>
             </div>

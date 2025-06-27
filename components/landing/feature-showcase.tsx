@@ -360,10 +360,10 @@ export function FeatureShowcase() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full"
+            className="w-2/3 mx-auto"
           >
-            <div className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-3xl p-2 shadow-2xl">
-              <div className="bg-zinc-50 dark:bg-zinc-800 rounded-2xl min-h-[500px] overflow-hidden">
+            <div className="bg-white dark:bg-black/5 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-3xl p-2 shadow-2xl">
+              <div className="bg-zinc-50 dark:bg-zinc-800 rounded-2xl min-h-[400px] overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeFeatureIndex}

@@ -100,7 +100,7 @@ const HeroSection = () => {
   }, [mouseX, mouseY])
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-white dark:bg-black">
+    <div className="relative w-full min-h-screen overflow-hidden bg-white dark:bg-black/5">
       {/* Add the orbit animation CSS */}
       <style jsx global>{`
         @keyframes orbit {

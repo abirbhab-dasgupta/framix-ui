@@ -35,7 +35,7 @@ export default function ComponentShowcase() {
           className="text-3xl md:text-4xl font-bold mb-4"
         >
           <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-            Beautiful Components
+            Visually Stunning UI Components
           </span>
         </motion.h2>
 

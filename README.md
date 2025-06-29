@@ -1,4 +1,5 @@
-# <img src="/public/framix--banner.png" alt="Framix UI Banner" width="100%" />
+# <img src="/public/framixui-light.png" alt="Framix UI Banner" width="100%" />
+# <img src="/public/framixui-dark.png" alt="Framix UI Banner" width="100%" />
 
 # Framix UI
 
